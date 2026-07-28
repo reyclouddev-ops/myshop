@@ -4,13 +4,15 @@ const OrderSchema = new mongoose.Schema({
 
 nama:String,
 
+wa:String,
+
+username:String,
+
 produk:String,
 
 kategori:String,
 
 harga:String,
-
-username:String,
 
 serverName:String,
 
