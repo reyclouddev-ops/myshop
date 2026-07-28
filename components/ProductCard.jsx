@@ -1,27 +1,26 @@
-export default function ProductCard({nama,harga}){
+"use client";
 
-return(
+import { useRouter } from "next/navigation";
 
-<div className="product">
+export default function ProductCard({ nama, harga, kategori }) {
+  const router = useRouter();
 
-<span className="badge">
+  return (
+    <div className="product">
+      <span className="badge">READY</span>
 
-READY
+      <h2>{nama}</h2>
+      <h3>{harga}</h3>
 
-</span>
-
-<h2>{nama}</h2>
-
-<h3>{harga}</h3>
-
-<button>
-
-Checkout
-
-</button>
-
-</div>
-
-)
-
+      <button
+        onClick={() => {
+          router.push(
+            `/checkout?kategori=${encodeURIComponent(kategori)}&produk=${encodeURIComponent(nama)}&harga=${encodeURIComponent(harga)}`
+          );
+        }}
+      >
+        Checkout
+      </button>
+    </div>
+  );
 }
