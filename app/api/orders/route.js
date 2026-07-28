@@ -1,31 +1,33 @@
 import { NextResponse } from "next/server";
-
 import { connectDB } from "@/lib/mongodb";
-
 import Order from "@/models/Order";
 
-export async function POST(req){
+export async function PUT(req,{params}){
 
 await connectDB();
 
 const body=await req.json();
 
-const order=await Order.create(body);
+await Order.findByIdAndUpdate(params.id,body);
 
-return NextResponse.json(order);
+return NextResponse.json({
 
-}
-
-export async function GET(){
-
-await connectDB();
-
-const data=await Order.find().sort({
-
-createdAt:-1
+success:true
 
 });
 
-return NextResponse.json(data);
+}
+
+export async function DELETE(req,{params}){
+
+await connectDB();
+
+await Order.findByIdAndDelete(params.id);
+
+return NextResponse.json({
+
+success:true
+
+});
 
 }
