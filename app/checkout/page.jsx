@@ -17,40 +17,51 @@ export default function Checkout() {
   const [server, setServer] = useState("");
   const [egg, setEgg] = useState("NodeJS");
 
-  async function bayar() {
+ 
+    async function bayar() {
 
-    if (!nama || !wa || !username) {
-      return alert("Lengkapi data terlebih dahulu!");
-    }
+  if (!nama || !wa || !username) {
+    return alert("Lengkapi data terlebih dahulu!");
+  }
 
-    if (kategori === "panel" && !server) {
-      return alert("Masukkan Request Server Name!");
-    }
+  if (kategori === "panel" && !server) {
+    return alert("Masukkan Request Server Name!");
+  }
 
-    // Simpan order ke MongoDB
-    await fetch("/api/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        nama,
-        wa,
-        username,
-        produk,
-        kategori,
-        harga,
-        serverName: server,
-        egg,
-        status: "Pending"
-      })
-    });
+  // Simpan Order
+  await fetch("/api/orders", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nama,
+      wa,
+      username,
+      produk,
+      kategori,
+      harga,
+      serverName: server,
+      egg,
+      status: "Pending"
+    })
+  });
 
-    let pesan = "";
+  // Ambil nomor WA yang aktif
+  const res = await fetch("/api/whatsapp");
+  const list = await res.json();
 
-    if (kategori === "panel") {
+  const admin = list.find(item => item.status);
 
-      pesan = `Halo Admin ReyCloud 👋
+  if (!admin) {
+    return alert("Maaf, saat ini tidak ada Admin yang sedang aktif.");
+  }
+
+  let pesan = "";
+
+  if (kategori === "panel") {
+
+    pesan = `Halo Admin ReyCloud 👋
 
 Saya ingin membeli Panel.
 
@@ -68,9 +79,9 @@ Egg : ${egg}
 
 ━━━━━━━━━━━━━━`;
 
-    } else {
+  } else {
 
-      pesan = `Halo Admin ReyCloud 👋
+    pesan = `Halo Admin ReyCloud 👋
 
 Saya ingin melakukan pembelian.
 
@@ -87,12 +98,12 @@ Username Roblox : ${username}
 
 ━━━━━━━━━━━━━━`;
 
-    }
-
-    window.location.href =
-      `https://wa.me/6281260512743?text=${encodeURIComponent(pesan)}`;
-
   }
+
+  window.location.href =
+    `https://wa.me/${admin.nomor}?text=${encodeURIComponent(pesan)}`;
+
+}
 
   return (
     <div className="checkout">
