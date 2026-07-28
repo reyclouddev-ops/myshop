@@ -1,31 +1,50 @@
+"use client";
+
 import Link from "next/link";
 
-export default function Admin(){
+export default function Admin() {
 
-return(
+  async function logout() {
 
-<div className="admin">
+    await fetch("/api/logout", {
+      method: "POST"
+    });
 
-<h1>
+    window.location.href = "/login";
+  }
 
-Dashboard Admin
+  return (
+    <div className="admin">
 
-</h1>
+      <h1>👑 Dashboard Admin</h1>
 
-<Link href="/admin/products">
+      <Link href="/admin/products">
+        📦 Kelola Produk
+      </Link>
 
-📦 Kelola Produk
+      <Link href="/admin/orders">
+        🛒 Pesanan
+      </Link>
 
-</Link>
+      <Link href="/admin/categories">
+        📂 Kategori
+      </Link>
 
-<Link href="/admin/orders">
+      <Link href="/admin/voucher">
+        🎟️ Voucher
+      </Link>
 
-🛒 Pesanan
+      <Link href="/admin/settings">
+        ⚙️ Pengaturan
+      </Link>
 
-</Link>
+      <button
+        onClick={logout}
+        className="logoutBtn"
+      >
+        🚪 Logout
+      </button>
 
-</div>
-
-)
-
+    </div>
+  );
 }
