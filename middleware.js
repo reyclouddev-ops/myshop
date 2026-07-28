@@ -1,33 +1,28 @@
 import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
-export function middleware(req){
+export function middleware(req) {
 
-const token=req.cookies.get("token");
+    const token = req.cookies.get("token")?.value;
 
-if(
+    if (!token) {
+        return NextResponse.redirect(new URL("/login", req.url));
+    }
 
-req.nextUrl.pathname.startsWith("/admin")
+    try {
 
-&&
+        jwt.verify(token, process.env.JWT_SECRET);
 
-!token
+        return NextResponse.next();
 
-){
+    } catch {
 
-return NextResponse.redirect(
+        return NextResponse.redirect(new URL("/login", req.url));
 
-new URL("/login",req.url)
-
-);
-
-}
-
-return NextResponse.next();
+    }
 
 }
 
-export const config={
-
-matcher:["/admin/:path*"]
-
-}
+export const config = {
+    matcher: ["/admin/:path*"]
+};
