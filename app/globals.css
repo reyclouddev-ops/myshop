@@ -173,3 +173,54 @@ cursor:pointer;
 font-weight:bold;
 
 }
+.checkout{
+
+max-width:500px;
+
+margin:auto;
+
+padding:20px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.checkout input{
+
+padding:12px;
+
+border-radius:10px;
+
+border:1px solid #ddd;
+
+}
+
+.checkout select{
+
+padding:12px;
+
+border-radius:10px;
+
+}
+
+.checkout button{
+
+padding:14px;
+
+background:#2563eb;
+
+color:white;
+
+border:none;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
