@@ -1,57 +1,90 @@
 "use client";
 
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function Products(){
+export default function Products() {
 
-const[data,setData]=useState([]);
+  const [data, setData] = useState([]);
 
-useEffect(()=>{
+  async function load() {
 
-fetch("/api/products")
+    const res = await fetch("/api/products");
 
-.then(res=>res.json())
+    setData(await res.json());
 
-.then(setData)
+  }
 
-},[]);
+  useEffect(() => {
 
-return(
+    load();
 
-<div className="container">
+  }, []);
 
-<h1>
+  async function hapus(id) {
 
-Daftar Produk
+    if (!confirm("Hapus produk ini?")) return;
 
-</h1>
+    await fetch("/api/products/" + id, {
 
-{
+      method: "DELETE"
 
-data.map((item)=>(
+    });
 
-<div
+    load();
 
-className="product"
+  }
 
-key={item._id}
+  return (
 
->
+    <div className="container">
 
-<h2>{item.nama}</h2>
+      <h1>Kelola Produk</h1>
 
-<p>{item.harga}</p>
+      <Link href="/admin/products/add">
 
-<p>{item.kategori}</p>
+        ➕ Tambah Produk
 
-</div>
+      </Link>
 
-))
+      <br /><br />
 
-}
+      {
 
-</div>
+        data.map((item) => (
 
-)
+          <div className="product" key={item._id}>
+
+            <h2>{item.nama}</h2>
+
+            <h3>{item.harga}</h3>
+
+            <p>{item.kategori}</p>
+
+            <Link href={`/admin/products/edit/${item._id}`}>
+
+              ✏️ Edit
+
+            </Link>
+
+            <button
+
+              onClick={() => hapus(item._id)}
+
+            >
+
+              🗑️ Hapus
+
+            </button>
+
+          </div>
+
+        ))
+
+      }
+
+    </div>
+
+  );
 
 }
