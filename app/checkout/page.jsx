@@ -5,180 +5,156 @@ import { useState } from "react";
 
 export default function Checkout() {
 
-const search = useSearchParams();
+  const search = useSearchParams();
 
-const kategori = search.get("kategori");
-const produk = search.get("produk");
-const harga = search.get("harga");
+  const kategori = search.get("kategori");
+  const produk = search.get("produk");
+  const harga = search.get("harga");
 
-const [nama,setNama]=useState("");
-const [wa,setWa]=useState("");
+  const [nama, setNama] = useState("");
+  const [wa, setWa] = useState("");
+  const [username, setUsername] = useState("");
+  const [server, setServer] = useState("");
+  const [egg, setEgg] = useState("NodeJS");
 
-const [username,setUsername]=useState("");
+  async function bayar() {
 
-const [server,setServer]=useState("");
+    if (!nama || !wa || !username) {
+      return alert("Lengkapi data terlebih dahulu!");
+    }
 
-const [egg,setEgg]=useState("NodeJS");
+    if (kategori === "panel" && !server) {
+      return alert("Masukkan Request Server Name!");
+    }
 
-function bayar(){
+    // Simpan order ke MongoDB
+    await fetch("/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nama,
+        wa,
+        username,
+        produk,
+        kategori,
+        harga,
+        serverName: server,
+        egg,
+        status: "Pending"
+      })
+    });
 
-let pesan="";
+    let pesan = "";
 
-if(kategori=="panel"){
+    if (kategori === "panel") {
 
-pesan=`Halo Admin ReyCloud 👋
+      pesan = `Halo Admin ReyCloud 👋
 
 Saya ingin membeli Panel.
 
 ━━━━━━━━━━━━━━
 
 Produk : ${produk}
-
 Harga : ${harga}
 
 Nama : ${nama}
-
 No WA : ${wa}
 
 Username Panel : ${username}
-
 Server Name : ${server}
-
 Egg : ${egg}
 
 ━━━━━━━━━━━━━━`;
 
-}else{
+    } else {
 
-pesan=`Halo Admin ReyCloud 👋
+      pesan = `Halo Admin ReyCloud 👋
 
-Saya ingin Top Up Roblox.
+Saya ingin melakukan pembelian.
 
 ━━━━━━━━━━━━━━
 
+Kategori : ${kategori}
 Produk : ${produk}
-
 Harga : ${harga}
 
 Nama : ${nama}
-
 No WA : ${wa}
 
 Username Roblox : ${username}
 
 ━━━━━━━━━━━━━━`;
 
-}
+    }
 
-window.open(
+    window.location.href =
+      `https://wa.me/6281260512743?text=${encodeURIComponent(pesan)}`;
 
-`https://wa.me/6281260512743?text=${encodeURIComponent(pesan)}`
+  }
 
-)
+  return (
+    <div className="checkout">
 
-}
+      <h1>Checkout</h1>
 
-return(
+      <h2>{produk}</h2>
 
-<div className="checkout">
+      <h3>{harga}</h3>
 
-<h1>Checkout</h1>
+      <input
+        placeholder="Nama"
+        value={nama}
+        onChange={(e) => setNama(e.target.value)}
+      />
 
-<h2>{produk}</h2>
+      <input
+        placeholder="Nomor WhatsApp"
+        value={wa}
+        onChange={(e) => setWa(e.target.value)}
+      />
 
-<h3>{harga}</h3>
+      <input
+        placeholder={
+          kategori === "panel"
+            ? "Username Panel"
+            : "Username Roblox"
+        }
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
 
-<input
+      {kategori === "panel" && (
+        <>
 
-placeholder="Nama"
+          <input
+            placeholder="Request Server Name"
+            value={server}
+            onChange={(e) => setServer(e.target.value)}
+          />
 
-value={nama}
+          <select
+            value={egg}
+            onChange={(e) => setEgg(e.target.value)}
+          >
+            <option>NodeJS</option>
+            <option>Python</option>
+            <option>PHP</option>
+            <option>Java</option>
+            <option>Bun</option>
+            <option>Go</option>
+            <option>Rust</option>
+            <option>Minecraft</option>
+          </select>
 
-onChange={(e)=>setNama(e.target.value)}
+        </>
+      )}
 
-/>
+      <button onClick={bayar}>
+        💬 Bayar via WhatsApp
+      </button>
 
-<input
-
-placeholder="Nomor WhatsApp"
-
-value={wa}
-
-onChange={(e)=>setWa(e.target.value)}
-
-/>
-
-<input
-
-placeholder={
-kategori=="panel" ?
-"Username Panel"
-:
-"Username Roblox"
-}
-
-value={username}
-
-onChange={(e)=>setUsername(e.target.value)}
-
-/>
-
-{
-
-kategori=="panel" && (
-
-<>
-
-<input
-
-placeholder="Request Server Name"
-
-value={server}
-
-onChange={(e)=>setServer(e.target.value)}
-
-/>
-
-<select
-
-value={egg}
-
-onChange={(e)=>setEgg(e.target.value)}
-
->
-
-<option>NodeJS</option>
-
-<option>Python</option>
-
-<option>PHP</option>
-
-<option>Java</option>
-
-<option>Bun</option>
-
-<option>Go</option>
-
-<option>Rust</option>
-
-<option>Minecraft</option>
-
-</select>
-
-</>
-
-)
-
-}
-
-<button onClick={bayar}>
-
-💬 Bayar via WhatsApp
-
-</button>
-
-</div>
-
-)
-
+    </div>
+  );
 }
