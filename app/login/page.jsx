@@ -38,13 +38,7 @@ return alert(data.message);
 
 }
 
-localStorage.setItem(
-
-"token",
-
-data.token
-
-);
+if(data.success){
 
 location.href="/admin";
 
