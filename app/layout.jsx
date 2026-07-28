@@ -5,7 +5,7 @@ export const metadata = {
   title: "ReyCloudShop",
   description: "Website Digital Store ReyCloud",
   icons: {
-    icon: "/favicon.ico"
+    icon: "/favicon.png"
   }
 };
 
