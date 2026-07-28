@@ -459,3 +459,36 @@ margin-bottom:20px;
 .logoutBtn:hover{
   background:#dc2626;
 }
+.product button{
+
+margin-top:10px;
+
+width:100%;
+
+padding:10px;
+
+background:#ef4444;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+.product a{
+
+display:block;
+
+margin:10px 0;
+
+text-decoration:none;
+
+color:#2563eb;
+
+font-weight:bold;
+
+}
