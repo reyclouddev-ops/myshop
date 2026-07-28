@@ -419,3 +419,43 @@ padding:30px;
 margin-bottom:20px;
 
 }
+.admin{
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.admin h1{
+  margin-bottom:10px;
+}
+
+.admin a{
+  padding:15px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.admin a:hover{
+  transform:translateY(-2px);
+}
+
+.logoutBtn{
+  margin-top:10px;
+  padding:15px;
+  background:#ef4444;
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.logoutBtn:hover{
+  background:#dc2626;
+}
