@@ -38,6 +38,10 @@ export default function Admin() {
         ⚙️ Pengaturan
       </Link>
 
+      <Link href="/admin/whatsapp">
+  📱 Seting WhatsApp Admin
+      </Link>
+
       <button
         onClick={logout}
         className="logoutBtn"
