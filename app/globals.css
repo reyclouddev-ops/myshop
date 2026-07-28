@@ -404,3 +404,18 @@ font-weight:bold;
 opacity:.9;
 
 }
+.login{
+
+max-width:450px;
+
+margin:auto;
+
+padding:30px;
+
+}
+
+.login h1{
+
+margin-bottom:20px;
+
+}
