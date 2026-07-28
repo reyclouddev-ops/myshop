@@ -737,3 +737,32 @@ border:none;
 border-radius:10px;
 
 }
+.product{
+
+padding:20px;
+
+background:white;
+
+border-radius:15px;
+
+margin-bottom:15px;
+
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+.product button{
+
+margin-top:10px;
+
+margin-right:10px;
+
+padding:10px 15px;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
