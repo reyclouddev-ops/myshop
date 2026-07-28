@@ -1,38 +1,72 @@
+<div align="center">
+
 # 🛒 ReyCloud Shop
 
-<p align="center">
-  <img src="public/favicon.png" width="120" alt="ReyCloud Logo">
-</p>
+### Website Digital Store Modern
 
-<p align="center">
-Website Digital Store modern berbasis <b>Next.js 15</b> untuk penjualan Panel Pterodactyl, Robux, Gamepass, VPS, Domain, dan produk digital lainnya.
-</p>
+Digital Store berbasis **Next.js 15** untuk penjualan **Panel Pterodactyl**, **Robux**, **Gamepass**, **VPS**, **Domain**, dan berbagai produk digital lainnya.
 
----
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Development-orange?style=for-the-badge)
 
-## ✨ Features
-
-- 🛍️ Digital Store
-- 💙 Tema Biru Putih
-- 🌙 Dark Mode (Biru Hitam)
-- 👤 Login Admin
-- 🔐 JWT Authentication
-- 🔒 Password Hash (bcrypt)
-- 📦 CRUD Produk
-- 📋 CRUD Order
-- 📱 Multi WhatsApp Admin
-- 📊 Dashboard Admin
-- 💬 Checkout ke WhatsApp
-- 🍃 MongoDB Database
-- ⚡ Next.js 15 App Router
-- 📱 Responsive Mobile
-- 🚀 Deploy Ready (Vercel)
+</div>
 
 ---
 
-# 📸 Preview
+# ✨ Fitur
 
-> Coming Soon...
+## 🛍️ Digital Store
+
+- Panel Pterodactyl
+- Robux Instant
+- Robux Delay
+- Gamepass Roblox
+- VPS
+- Domain
+- Produk Digital
+
+---
+
+## 👤 Admin
+
+- Login Admin
+- JWT Authentication
+- Password Hash (bcryptjs)
+- Middleware Protection
+
+---
+
+## 📦 Manajemen
+
+- CRUD Produk
+- CRUD Order
+- CRUD WhatsApp Admin
+- Multi Admin WhatsApp
+- Dashboard Admin
+- Statistik Order
+
+---
+
+## 💬 Checkout
+
+- Checkout via WhatsApp
+- Multi Nomor Admin
+- Prioritas Admin
+- Otomatis Simpan Order ke MongoDB
+
+---
+
+## 🎨 Tampilan
+
+- Tema Biru Putih
+- Dark Mode Biru Hitam
+- Responsive
+- Mobile Friendly
+- Loading Screen
+- Custom 404 Page
 
 ---
 
@@ -40,32 +74,67 @@ Website Digital Store modern berbasis <b>Next.js 15</b> untuk penjualan Panel Pt
 
 ```text
 app/
+│
+├── admin/
+├── api/
+├── checkout/
+├── login/
+├── panel/
+├── robux/
+├── gamepass/
+│
 components/
+│
 data/
+│
 lib/
+│
 models/
+│
 public/
+│
 middleware.js
 package.json
+README.md
 ```
 
 ---
 
-# ⚙️ Install
+# 🚀 Instalasi
+
+Clone repository
 
 ```bash
 git clone https://github.com/reyclouddev-ops/myshop.git
+```
 
+Masuk ke folder
+
+```bash
 cd myshop
+```
 
+Install dependency
+
+```bash
 npm install
+```
 
+Jalankan project
+
+```bash
 npm run dev
+```
+
+Website berjalan di
+
+```text
+http://localhost:3000
 ```
 
 ---
 
-# 🔑 Environment
+# 🔑 Environment Variable
 
 Buat file `.env.local`
 
@@ -77,47 +146,45 @@ JWT_SECRET=
 
 ---
 
-# 🚀 Deploy
-
-Deploy sangat mudah menggunakan:
-
-- Vercel
-- MongoDB Atlas
-
----
-
-# 📦 Tech Stack
+# 🧰 Tech Stack
 
 - Next.js 15
 - React 19
-- MongoDB
+- MongoDB Atlas
 - Mongoose
 - JWT
 - bcryptjs
 - Lucide React
+- Next Top Loader
 
 ---
 
 # 📱 Contact
 
-WhatsApp
+**WhatsApp**
 
-> 6281260512743
+```
+6281260512743
+```
 
 ---
 
-# 👨‍💻 Developer
+# 📜 License
 
-**ReyCloud**
+Project ini menggunakan lisensi **MIT**.
+
+---
+
+<div align="center">
+
+## 👨‍💻 Developer
+
+### ReyCloud
 
 Website Digital Store Indonesia 🇮🇩
 
----
-
-# ⭐ Support
-
-Kalau project ini membantu, jangan lupa kasih ⭐ pada repository ini.
-
----
+⭐ Jangan lupa beri **Star** jika project ini bermanfaat!
 
 Made with ❤️ by **ReyCloud**
+
+</div>
