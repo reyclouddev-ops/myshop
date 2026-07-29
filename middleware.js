@@ -12,9 +12,7 @@ export function middleware(req) {
 
   if (!user) {
     const res = NextResponse.redirect(new URL("/login", req.url));
-
     res.cookies.delete("token");
-
     return res;
   }
 
