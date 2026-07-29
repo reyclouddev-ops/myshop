@@ -1,25 +1,26 @@
 "use client";
 
+import Link from "next/link";
 import { Search, User } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="navbar">
+    <header className="navbar">
 
-      <h2>ReyCloud</h2>
+      <div className="navbarTop">
+        <h1 className="logo">☁️ ReyCloud</h1>
 
-      <div className="search">
-
-        <Search size={20}/>
-
-        <input
-          placeholder="Cari Produk..."
-        />
-
+        <Link href="/akun" className="profile">
+          <User size={24} />
+        </Link>
       </div>
 
-      <User size={24}/>
+      <Link href="/search" className="searchBox">
+        <Search size={20} />
 
-    </nav>
+        <span>Cari Produk...</span>
+      </Link>
+
+    </header>
   );
 }
