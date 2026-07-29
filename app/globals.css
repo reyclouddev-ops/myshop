@@ -903,3 +903,72 @@ cursor:pointer;
 .heroButton a:hover{
   transform:translateY(-3px);
 }
+/* ===== CATEGORY ===== */
+
+.categorySection{
+  padding:20px;
+}
+
+.title{
+  margin-bottom:18px;
+}
+
+.title h2{
+  font-size:24px;
+  color:#111827;
+}
+
+.title p{
+  color:#6b7280;
+  margin-top:4px;
+}
+
+.categoryGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.categoryCard{
+  background:#fff;
+  border-radius:18px;
+  padding:20px 10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#111827;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.categoryCard:hover{
+  transform:translateY(-5px);
+}
+
+.categoryIcon{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#eff6ff;
+  color:#2563eb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.categoryCard span{
+  font-size:14px;
+  font-weight:600;
+  text-align:center;
+}
+
+@media(max-width:768px){
+
+.categoryGrid{
+  grid-template-columns:repeat(2,1fr);
+}
+
+}
