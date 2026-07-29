@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
-
-const SECRET = process.env.JWT_SECRET || "ReyCloudSuperSecret";
+import { verifyToken } from "@/lib/auth";
 
 export function middleware(req) {
   const token = req.cookies.get("token")?.value;
@@ -10,15 +8,17 @@ export function middleware(req) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  try {
-    jwt.verify(token, SECRET);
+  const user = verifyToken(token);
 
-    return NextResponse.next();
-  } catch (err) {
-    console.error("JWT Error:", err.message);
+  if (!user) {
+    const res = NextResponse.redirect(new URL("/login", req.url));
 
-    return NextResponse.redirect(new URL("/login", req.url));
+    res.cookies.delete("token");
+
+    return res;
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
