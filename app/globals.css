@@ -806,3 +806,50 @@ cursor:pointer;
 .deleteBtn:hover{
   background:#dc2626;
 }
+/* ===== NAVBAR ===== */
+
+.navbar{
+  background:#2563eb;
+  padding:20px;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+  box-shadow:0 10px 30px rgba(37,99,235,.2);
+}
+
+.navbarTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.logo{
+  color:white;
+  font-size:30px;
+  font-weight:700;
+}
+
+.profile{
+  width:45px;
+  height:45px;
+  background:rgba(255,255,255,.15);
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  text-decoration:none;
+}
+
+.searchBox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:white;
+  padding:14px 18px;
+  border-radius:16px;
+  text-decoration:none;
+  color:#777;
+  font-size:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
