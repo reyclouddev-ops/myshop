@@ -1,21 +1,33 @@
-export default function Banner(){
+import Link from "next/link";
 
-return(
+export default function Banner() {
+  return (
+    <section className="hero">
 
-<div className="banner">
+      <span className="heroBadge">
+        🚀 Digital Store Terpercaya
+      </span>
 
-<h1>
-Selamat Datang di ReyCloudShop
-</h1>
+      <h1>
+        ReyCloudShop
+      </h1>
 
-<p>
+      <p>
+        Panel • VPS • Domain • GamePass • Robux • Script
+      </p>
 
-Panel • VPS • Domain • Robux • GamePass
+      <div className="heroButton">
 
-</p>
+        <Link href="/shop">
+          🛒 Mulai Belanja
+        </Link>
 
-</div>
+        <Link href="/panel">
+          💻 Panel
+        </Link>
 
-)
+      </div>
 
+    </section>
+  );
 }
