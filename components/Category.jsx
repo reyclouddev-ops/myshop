@@ -1,64 +1,85 @@
+import Link from "next/link";
+import {
+  Server,
+  Cloud,
+  Globe,
+  Gamepad2,
+  Bot,
+  Gift,
+  Code,
+  Cpu
+} from "lucide-react";
+
 const menu = [
+  {
+    name: "Panel",
+    icon: <Server size={34} />,
+    link: "/panel"
+  },
+  {
+    name: "VPS",
+    icon: <Cloud size={34} />,
+    link: "/vps"
+  },
+  {
+    name: "Domain",
+    icon: <Globe size={34} />,
+    link: "/domain"
+  },
+  {
+    name: "GamePass",
+    icon: <Gamepad2 size={34} />,
+    link: "/gamepass"
+  },
+  {
+    name: "Sewa Bot",
+    icon: <Bot size={34} />,
+    link: "/sewabot"
+  },
+  {
+    name: "Robux",
+    icon: <Gift size={34} />,
+    link: "/robux"
+  },
+  {
+    name: "Script",
+    icon: <Code size={34} />,
+    link: "/script"
+  },
+  {
+    name: "Hosting",
+    icon: <Cpu size={34} />,
+    link: "/hosting"
+  }
+];
 
-{
-nama:"🖥️ Panel Pterodactyl",
-link:"/panel"
-},
+export default function Category() {
+  return (
+    <section className="categorySection">
 
-{
-nama:"☁️ VPS",
-link:"/vps"
-},
+      <div className="title">
+        <h2>✨ Kategori</h2>
+        <p>Pilih layanan favoritmu</p>
+      </div>
 
-{
-nama:"🌐 Domain",
-link:"/domain"
-},
+      <div className="categoryGrid">
 
-{
-nama:"💎 Robux Instant",
-link:"/robux"
-},
+        {menu.map((item, index) => (
+          <Link
+            href={item.link}
+            className="categoryCard"
+            key={index}
+          >
+            <div className="categoryIcon">
+              {item.icon}
+            </div>
 
-{
-nama:"⏳ Robux Delay 2 Hari",
-link:"/robux-delay"
-},
+            <span>{item.name}</span>
+          </Link>
+        ))}
 
-{
-nama:"🎟️ GamePass",
-link:"/gamepass"
-},
+      </div>
 
-{
-nama:"🤖 Bot WhatsApp",
-link:"/bot"
-}
-
-]
-
-export default function Category(){
-
-return(
-
-<div className="category">
-
-{menu.map((item,index)=>(
-
-<a
-key={index}
-href={item.link}
-className="card"
->
-
-{item.nama}
-
-</a>
-
-))}
-
-</div>
-
-)
-
+    </section>
+  );
 }
