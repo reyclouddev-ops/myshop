@@ -1,28 +1,26 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
+const SECRET = process.env.JWT_SECRET || "ReyCloudSuperSecret";
+
 export function middleware(req) {
+  const token = req.cookies.get("token")?.value;
 
-    const token = req.cookies.get("token")?.value;
+  if (!token) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 
-    if (!token) {
-        return NextResponse.redirect(new URL("/login", req.url));
-    }
+  try {
+    jwt.verify(token, SECRET);
 
-    try {
+    return NextResponse.next();
+  } catch (err) {
+    console.error("JWT Error:", err.message);
 
-        jwt.verify(token, process.env.JWT_SECRET);
-
-        return NextResponse.next();
-
-    } catch {
-
-        return NextResponse.redirect(new URL("/login", req.url));
-
-    }
-
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 }
 
 export const config = {
-    matcher: ["/admin/:path*"]
+  matcher: ["/admin/:path*"]
 };
